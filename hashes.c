@@ -27,30 +27,30 @@ unsigned long sdbm(unsigned char *str){
 
 	unsigned long hash = 0;
 	int c;
-	
+
 	while(c = *str++){
 		hash = c + (hash << 6) + (hash << 16) - hash;
 	}
 
 	return hash;
-	
+
 }
 
 //lose lose algorithm
 unsigned long loselose(unsigned char *str){
-	
+
 	unsigned int hash = 0;
 	int c;
 
 	while(c = *str++){
 		hash += c;
 	}
-	
+
 	return hash;
 }
 
 int main(int argc, char **argv){
-	 
+
 	printf("djb2: %ld\nsdbm: %ld\nlose lose: %ld\n", djb2(argv[1]), sdbm(argv[1]), loselose(argv[1]));
 	return 0;
 }
